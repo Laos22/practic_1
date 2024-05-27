@@ -14075,7 +14075,7 @@ window.addEventListener('DOMContentLoaded', () => {
   (0,_modules_modal__WEBPACK_IMPORTED_MODULE_1__["default"])();
   (0,_modules_tabs__WEBPACK_IMPORTED_MODULE_2__["default"])('.glazing', '.glazing_block', '.glazing_content', 'active');
   (0,_modules_tabs__WEBPACK_IMPORTED_MODULE_2__["default"])('.decoration_slider', '.no_click', '.decoration_content > div > div', 'after_click');
-  // timer('06-23-2024 12:00');
+  (0,_modules_timer__WEBPACK_IMPORTED_MODULE_3__["default"])('06-23-2024 12:00');
 });
 })();
 
