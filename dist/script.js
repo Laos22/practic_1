@@ -113,7 +113,8 @@ function timer(date) {
     const days = document.querySelector('#days'),
       hours = document.querySelector('#hours'),
       minutes = document.querySelector('#minutes'),
-      seconds = document.querySelector('#seconds');
+      seconds = document.querySelector('#seconds'),
+      setTimer = setInterval(setTime, 1000);
     function getTimeDiffirent(endTime) {
       const t = Date.parse(endTime) - new Date();
       if (t <= 0) return {
@@ -134,6 +135,10 @@ function timer(date) {
         minutes: minutes,
         seconds: seconds
       };
+    }
+    ;
+    function getZero(n) {
+      return n > 9 ? "" + n : "0" + n;
     }
     ;
     function setTime() {
@@ -14075,7 +14080,7 @@ window.addEventListener('DOMContentLoaded', () => {
   (0,_modules_modal__WEBPACK_IMPORTED_MODULE_1__["default"])();
   (0,_modules_tabs__WEBPACK_IMPORTED_MODULE_2__["default"])('.glazing', '.glazing_block', '.glazing_content', 'active');
   (0,_modules_tabs__WEBPACK_IMPORTED_MODULE_2__["default"])('.decoration_slider', '.no_click', '.decoration_content > div > div', 'after_click');
-  (0,_modules_timer__WEBPACK_IMPORTED_MODULE_3__["default"])('06-23-2024 12:00');
+  (0,_modules_timer__WEBPACK_IMPORTED_MODULE_3__["default"])('05-27-2024 23:40');
 });
 })();
 

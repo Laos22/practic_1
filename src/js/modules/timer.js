@@ -5,7 +5,8 @@ function timer(date) {
         const days = document.querySelector('#days'),
               hours = document.querySelector('#hours'),
               minutes = document.querySelector('#minutes'),
-              seconds = document.querySelector('#seconds');
+              seconds = document.querySelector('#seconds'),
+              setTimer = setInterval(setTime, 1000);
 
         function getTimeDiffirent(endTime) {
             const t = Date.parse(endTime) - new Date();
@@ -30,6 +31,10 @@ function timer(date) {
             };
         };
 
+        function getZero(n) {
+            return n > 9 ? "" + n: "0" + n;
+        };
+
         function setTime() {
             const time = getTimeDiffirent(date);
             days.innerHTML = getZero(time.days);
@@ -40,8 +45,6 @@ function timer(date) {
         };
 
         setTime();
-        
-        
     }
     showTime();
 
