@@ -47,7 +47,7 @@ function timer(date) {
         setTime();
     }
     showTime();
-
+    
 }
 
 export default timer;
