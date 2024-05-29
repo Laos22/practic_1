@@ -1,19 +1,17 @@
-function forms() {
-    const form = document.querySelectorAll('form'),
-          inputs = document.querySelectorAll('input'),
-          inputsPhone = document.querySelectorAll('input[name="user_phone"]');
+import checkNumImput from "./checkNumImput";
 
-    inputsPhone.forEach(item => {
-        item.addEventListener('input', () => {
-            item.value = item.value.replace(/\D/, '')
-        })
-    })
+function forms(state) {
+    const form = document.querySelectorAll('form'),
+          inputs = document.querySelectorAll('input');
+          
 
     const message = {
         loading: 'Загрузка...',
         success: 'Спасибо! Скоро мы с вами свяжемся.',
         failure: 'Что-то пошло не так...'
     };
+
+    checkNumImput('input[name="user_phone"]');
 
     async function postData(url, data) {
         document.querySelector('.status').textContent = message.loading;
@@ -43,11 +41,11 @@ function forms() {
 
             const formData = new FormData(item);
 
+            if (item.getAttribute('data-calc')) for (let key in state) formData.append(key, state[key]);
+
             postData('assets/server.php', formData)
                 .then(res => {
-                    console.log(res)
                     messageStatus.textContent = message.success;
-                    
                 }).catch(() => {
                     messageStatus.textContent = message.failure;
                 }).finally(() => {

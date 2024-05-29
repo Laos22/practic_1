@@ -1,7 +1,7 @@
 
 const modals = () => {
 
-    function bindmodal(triggerSelector, modalSelector, closeSelector) {
+    function bindmodal(triggerSelector, modalSelector, closeSelector, clickFreeToClose = true) {
         const trigger = document.querySelectorAll(triggerSelector),
               modal = document.querySelector(modalSelector),
               close = document.querySelector(closeSelector);
@@ -9,7 +9,9 @@ const modals = () => {
         trigger.forEach(item => {
             item.addEventListener('click', (e) => {
                 if (e.target) e.preventDefault();
-                // console.log('ok')
+                document.querySelectorAll('[data-modal]').forEach(item => {
+                    item.style.display = 'none';
+                })
                 modal.style.display = 'block';
                 document.body.style.overflow = 'hidden';
             })
@@ -21,7 +23,7 @@ const modals = () => {
         })
 
         modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
+            if (e.target === modal && clickFreeToClose) {
                 modal.style.display = 'none';
                 document.body.style.overflow = '';
             }
@@ -39,13 +41,11 @@ const modals = () => {
     }
 
     
-    
-    
-    
-    
-    
     bindmodal('.popup_engineer_btn', '.popup_engineer', '.popup_engineer .popup_close');
     bindmodal('.phone_link', '.popup', '.popup .popup_close');
+    bindmodal('.popup_calc_btn', '.popup_calc', '.popup_calc_close');
+    bindmodal('.popup_calc_button', '.popup_calc_profile', '.popup_calc_profile_close', false);
+    bindmodal('.popup_calc_profile_button', '.popup_calc_end', '.popup_calc_end_close', false);
     // showModalByTime('.popup', 60000);
 
 }
